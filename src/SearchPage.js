@@ -10,22 +10,37 @@ import {
 } from 'react-native';
 
 class SearchPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false,
+      message: ''
+    };
+  }
+
+  onSearchPressed() {
+    console.log('Clicked');
+  }
+
   render() {
     return (
       <View style={styles.container}>
+        <Image source={require('../sunset.jpg')} style={styles.image} />
         <Text style={styles.discription}>
           Find out what time is the next Sunset or Sunrise in your city.
         </Text>
-        <Text style={styles.discription}>
-          Enter your location
-        </Text>
-        <View style={styles.flowRight}>
-          <TextInput
-            style={styles.searchInput}/>
+        <View style={styles.buttons}>
           <TouchableHighlight
             style={styles.button}
-            underlayColor='green'>
-            <Text style={styles.buttonText}>Go</Text>
+            underlayColor='#00ffff'
+            onPress={this.onSearchPressed.bind(this)}>
+            <Text style={styles.buttonText}>Sun Rise</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor='#00ffff'
+            onPress={this.onSearchPressed.bind(this)}>
+            <Text style={styles.buttonText}>Sun Set</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -35,17 +50,17 @@ class SearchPage extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 30,
+    // padding: 30,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     backgroundColor: 'black'
   },
   discription: {
-    marginBottom: 20,
+    marginTop: 15,
     fontSize: 18,
     textAlign: 'center',
-    color: 'yellow'
+    color: 'blue'
   },
   searchInput: {
     height: 36,
@@ -59,25 +74,30 @@ const styles = StyleSheet.create({
     color: 'blue'
   },
   button: {
-    height: 36,
+    margin: 10,
+    height: 66,
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'brown',
+    backgroundColor: 'red',
     borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
+    borderRadius: 5,
     alignSelf: 'stretch',
     justifyContent: 'center'
   },
-  flowRight: {
-    flexDirection: 'row',
+  buttons: {
+    flexDirection: 'column',
     alignItems: 'center',
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
+    marginTop: 50
   },
   buttonText: {
     fontSize: 18,
-    color: 'red',
+    color: 'yellow',
     alignSelf: 'center'
+  },
+  image: {
+    width: 400,
+    height: 300
   }
 });
 
