@@ -7,7 +7,7 @@ import {
   NavigatorIOS
 } from 'react-native';
 
-import SearchPage from './src/SearchPage';
+import SearchPage from './src/SearchPage/SearchPage';
 
 class SunriseSunset extends Component {
   render() {

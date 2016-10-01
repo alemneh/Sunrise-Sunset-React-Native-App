@@ -9,7 +9,8 @@ import {
   Image
 } from 'react-native';
 
-import TimeResults from './TimeResults';
+import styles from './styles';
+import TimeResult from '../TimeResult/TimeResult';
 
 function urlForQuery(lat, lng) {
   console.log(lat, lng);
@@ -43,7 +44,7 @@ class SearchPage extends Component {
     if(response) {
       this.props.navigator.push({
         title: 'Results',
-        component: TimeResults,
+        component: TimeResult,
         passProps: {time: response}
       })
     }
@@ -72,7 +73,7 @@ class SearchPage extends Component {
       ( <View/>);
     return (
       <View style={styles.container}>
-        <Image source={require('../sunset.jpg')} style={styles.image} />
+        <Image source={require('../images/sunset.jpg')} style={styles.image} />
         <Text style={styles.discription}>
           Find out what time is the next Sunset or Sunrise in your city.
         </Text>
@@ -90,57 +91,6 @@ class SearchPage extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: 'black'
-  },
-  discription: {
-    marginTop: 15,
-    fontSize: 18,
-    textAlign: 'center',
-    color: 'blue'
-  },
-  searchInput: {
-    height: 36,
-    padding: 4,
-    flex: 4,
-    marginRight: 5,
-    borderWidth: 1,
-    borderRadius: 8,
-    fontSize: 18,
-    borderColor: 'green',
-    color: 'blue'
-  },
-  button: {
-    margin: 10,
-    height: 66,
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'red',
-    borderWidth: 1,
-    borderRadius: 5,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  buttons: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    alignSelf: 'stretch',
-    marginTop: 50
-  },
-  buttonText: {
-    fontSize: 18,
-    color: 'yellow',
-    alignSelf: 'center'
-  },
-  image: {
-    width: 400,
-    height: 300
-  }
-});
 
 
 export default SearchPage;
